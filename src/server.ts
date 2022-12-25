@@ -13,11 +13,10 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log(`socket ${socket.id} connected`);
-    io.emit('chat message', `Client ${socket.id} logged in`);
 
-    socket.on('chat message', (msg) => {
-        console.log(`new message received: ${msg}`);
-        io.emit('chat message', msg);
+    socket.on('chat message', (username, msg) => {
+        console.log(`new message from ${username} received: ${msg}`);
+        io.emit('chat message', username, msg);
     });
 
     // upon disconnection

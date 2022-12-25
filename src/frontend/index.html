@@ -66,8 +66,10 @@
     <form id="form" action="">
         <input id="input" autocomplete="off" /><button>Send</button>
     </form>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        var usernameInput = prompt('whats your username?');
         var socket = io();
 
         var messages = document.getElementById('messages');
@@ -77,17 +79,20 @@
         form.addEventListener('submit', function (e) {
             e.preventDefault();
             if (input.value) {
-                socket.emit('chat message', input.value);
+                socket.emit('chat message', usernameInput, input.value);
                 input.value = '';
             }
         });
 
-        socket.on('chat message', function (msg) {
+        socket.on('chat message', function (username, msg) {
             var item = document.createElement('li');
-            item.textContent = msg;
+            item.textContent = username + ': ' + msg;
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);
         });
+
+        // LOGIN MESSAGE
+        socket.emit('chat message', usernameInput, 'has entered the chat');
     </script>
 </body>
 
