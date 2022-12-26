@@ -12,9 +12,9 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+    const userName = socket.handshake.query.username;
     console.log(`socket ${socket.id} connected`);
-
-    socket.on('chat message', (username, msg) => {
+    socket.on('chat message', (username: string, msg: string) => {
         console.log(`new message from ${username} received: ${msg}`);
         io.emit('chat message', username, msg);
     });
@@ -22,6 +22,7 @@ io.on('connection', (socket) => {
     // upon disconnection
     socket.on('disconnect', (reason) => {
         console.log(`socket ${socket.id} disconnected due to ${reason}`);
+        io.emit('chat message', userName, 'has left the chat');
     });
 });
 
