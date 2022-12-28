@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     const userName = socket.handshake.query.username;
-    console.log(`socket ${socket.id} connected`);
+    console.log(`socket ${socket.id} as username: ${userName} connected`);
     socket.on('chat message', (username: string, msg: string) => {
         console.log(`new message from ${username} received: ${msg}`);
         io.emit('chat message', username, msg);
