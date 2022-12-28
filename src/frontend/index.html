@@ -53,6 +53,15 @@
 
         #messages>li {
             padding: 0.5rem 1rem;
+            border: 2px solid #dedede;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        li>span {
+            float: right;
+
         }
 
         #messages>li:nth-child(odd) {
@@ -89,10 +98,18 @@
         });
 
         socket.on('chat message', function (username, msg) {
-            var item = document.createElement('li');
+            // MESSAGE TEXT
+            const item = document.createElement('li');
+            item.textContent = username + ': ' + msg;
+
+            // MESSAGE TIME
+            const time = document.createElement('span');
             const date = new Date;
-            item.textContent = username + ': ' + msg + '     ' + String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
+            time.textContent = String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes());
+
             messages.appendChild(item);
+            item.appendChild(time);
+
             window.scrollTo(0, document.body.scrollHeight);
         });
 
