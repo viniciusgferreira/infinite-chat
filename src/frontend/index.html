@@ -90,7 +90,8 @@
 
         socket.on('chat message', function (username, msg) {
             var item = document.createElement('li');
-            item.textContent = username + ': ' + msg;
+            const date = new Date;
+            item.textContent = username + ': ' + msg + '     ' + String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);
         });
