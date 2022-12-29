@@ -20,7 +20,7 @@ io.on('connection', (socket) => {
     });
 
     // upon disconnection
-    socket.on('disconnect', (reason) => {
+    socket.on('disconnect', (reason: string) => {
         console.log(`socket ${socket.id} disconnected due to ${reason}`);
         io.emit('chat message', userName, 'has left the chat');
     });
