@@ -78,9 +78,9 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var usernameInput = prompt('choose your username. It can only be letters');
-        while (usernameInput.match(/^$|\s+|[^a-z]/)) {
-            usernameInput = prompt('choose your username. It can only be letters');
+        var usernameInput = prompt('choose your username. It can only be letters and Underscore ( user_example )');
+        while (usernameInput.match(/^$|\s+|[^a-zA-z]/)) {
+            usernameInput = prompt('choose your username. It can only be letters and Underscore ( user_example )');
         }
         var socket = io('', {
             query: {
