@@ -78,7 +78,10 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        var usernameInput = prompt('choose your username');
+        var usernameInput = prompt('choose your username. It can only be letters');
+        while (usernameInput.match(/^$|\s+|[^a-z]/)) {
+            usernameInput = prompt('choose your username. It can only be letters');
+        }
         var socket = io('', {
             query: {
                 'username': usernameInput
@@ -87,13 +90,13 @@
 
         var messages = document.getElementById('messages');
         var form = document.getElementById('form');
-        var input = document.getElementById('input');
+        var textMessage = document.getElementById('input');
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            if (input.value) {
-                socket.emit('chat message', usernameInput, input.value);
-                input.value = '';
+            if (textMessage.value) {
+                socket.emit('chat message', usernameInput, textMessage.value);
+                textMessage.value = '';
             }
         });
 
