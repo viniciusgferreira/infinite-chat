@@ -108,7 +108,7 @@
             // MESSAGE TIME
             const time = document.createElement('span');
             const date = new Date;
-            time.textContent = String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes());
+            time.textContent = String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
 
             messages.appendChild(item);
             item.appendChild(time);
