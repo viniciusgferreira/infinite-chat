@@ -1,19 +1,21 @@
 # Infinite Chat
 
-## Chat application using socket.io
+## Chat application using Socket.io
 
 This is a project to use real-time communication with NodeJS express server and any frontend client.
 The front end is a simple way to show the chat messages with time and username of the sender.
+
+The connection between Server and Clients use WebSocket protocol behind the Socket.io library.
 
 ![image](https://user-images.githubusercontent.com/30271243/210014969-e99b5015-dbaf-4eb8-af85-7cde3b26614c.png)
 
 
 ### Tech Stack
-Node.Js
-Express.js
-Socket.io
-Typescript
-HTML/CSS
+Node.Js  
+Express.js  
+Socket.io  
+Typescript  
+HTML/CSS  
 
 ## How to run the app
 
